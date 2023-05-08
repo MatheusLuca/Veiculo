@@ -5,24 +5,24 @@ public class Carro extends Veiculos{
 	private double distanciaPercorrida;
 	private double velocidade;
 	
-	public Carro(String marca, String modelo, String placa, int ano, double combustivel,String tipoDeCombustivel, double distanciaPercorrida, double velocidade) {
+	public Carro(String marca, String modelo, String placa, int ano, double combustivel,String tipoDeCombustivel, double distanciaPercorrida, double velocidade, int capacidadeTanque) {
 		
-		super(marca, modelo, placa, ano, combustivel, tipoDeCombustivel);
+		super(marca, modelo, placa, ano, combustivel, tipoDeCombustivel, capacidadeTanque);
 		this.distanciaPercorrida = distanciaPercorrida;
-
-
+	    
 	}
 	
 	
 	public double getDistanciaPercorrida() {
 		return distanciaPercorrida;
 	}
-	
-	
+		
 	@Override
-	public void setCapacidadeTanque(int capacidadeTanque) {
-		super.setCapacidadeTanque(55);
+	public int getCapacidadeTanque() {
+
+		return super.getCapacidadeTanque();
 	}
+	
 	
 	@Override
 	public double consumirCombustivel(double distancia, double combustivel) {
@@ -36,6 +36,14 @@ public class Carro extends Veiculos{
 		 else {
 			return distancia / combustivel;
 		}
+	}
+	
+	
+	@Override
+	public double velocidadeMedia(double distancia, double tempo) {
+			
+		return distancia / tempo;
+		
 	}
 	
 	
