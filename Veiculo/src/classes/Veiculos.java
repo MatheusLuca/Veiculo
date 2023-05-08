@@ -8,6 +8,7 @@ public abstract class Veiculos {
 	protected int ano;
 	protected double combustivel;
 	protected String tipoDeCombustivel;
+	protected int capacidadeTanque;
 	
 	public Veiculos(String marca, String modelo, String placa, int ano, double combustivel, String tipoDeCombustivel) {
 
@@ -47,9 +48,14 @@ public abstract class Veiculos {
 		this.tipoDeCombustivel = tipoDeCombustivel;
 	}
 	
+	public void setCapacidadeTanque(int capacidadeTanque) {
+		this.capacidadeTanque = capacidadeTanque;
+	}
+	
 	
 	public abstract double consumirCombustivel(double distancia, double combustivel);
-	public abstract double velocidadeMedia();
-	public abstract double frenagem();
+	//public abstract double velocidadeMedia(double distancia, double tempo);
+	//public abstract double frenagem();
+
 
 }
