@@ -1,14 +1,16 @@
 package classes;
 
-public class Carro extends Veiculos {
+public class Carro extends Veiculos{
 	
 	private double distanciaPercorrida;
 	private double velocidade;
-	public Carro(String marca, String modelo, String placa, int ano, double combustivel,
-				 String tipoDeCombustivel, double distanciaPercorrida, double velocidade) {
+	
+	public Carro(String marca, String modelo, String placa, int ano, double combustivel,String tipoDeCombustivel, double distanciaPercorrida, double velocidade) {
 		
 		super(marca, modelo, placa, ano, combustivel, tipoDeCombustivel);
 		this.distanciaPercorrida = distanciaPercorrida;
+
+
 	}
 	
 	
@@ -18,23 +20,27 @@ public class Carro extends Veiculos {
 	
 	
 	@Override
+	public void setCapacidadeTanque(int capacidadeTanque) {
+		super.setCapacidadeTanque(55);
+	}
+	
+	@Override
 	public double consumirCombustivel(double distancia, double combustivel) {
 		
-	return distancia / combustivel;	
-
+		 double potencialCombustivelGasolina = 1.30;
+		 
+		 if (super.getTipoDeCombustivel().equalsIgnoreCase("gasolina")) {
+			return distancia / (combustivel * potencialCombustivelGasolina);
+		}
+		 
+		 else {
+			return distancia / combustivel;
+		}
 	}
+	
+	
 
-	@Override
-	public double velocidadeMedia() {
-		
-		return 0;
-	}
 
-	@Override
-	public double frenagem() {
-		
-		return 0;
-	}
 	
 	
 }
