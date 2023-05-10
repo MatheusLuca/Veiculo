@@ -1,15 +1,19 @@
 package classes;
 
+import java.util.Random;
+
 public class Carro extends Veiculos{
 	
 	private double distanciaPercorrida;
 	private double velocidade;
+	public static int capacidadeTanque = 55;
 	
-	public Carro(String marca, String modelo, String placa, int ano, double combustivel,String tipoDeCombustivel, double distanciaPercorrida, double velocidade, int capacidadeTanque) {
+	public Carro(String marca, String modelo, String placa, int ano, String tipoDeCombustivel ){
+		super(marca, modelo, placa, ano, tipoDeCombustivel, capacidadeTanque);
 		
-		super(marca, modelo, placa, ano, combustivel, tipoDeCombustivel, capacidadeTanque);
-		this.distanciaPercorrida = distanciaPercorrida;
-	    
+		
+		
+
 	}
 	
 	
@@ -22,7 +26,8 @@ public class Carro extends Veiculos{
 
 		return super.getCapacidadeTanque();
 	}
-	
+
+
 	
 	@Override
 	public double consumirCombustivel(double distancia, double combustivel) {
@@ -40,15 +45,40 @@ public class Carro extends Veiculos{
 	
 	
 	@Override
-	public double velocidadeMedia(double distancia, double tempo) {
+	public  double geraCombustivel() {
+		
+		double valorAtualDoTanque = 0;	
+		Random gerarValorAtualDoTanque = new Random();
+		valorAtualDoTanque = gerarValorAtualDoTanque.nextDouble() * 54 + 1;
+		Math.round(valorAtualDoTanque);
+		return valorAtualDoTanque;
+	}
+	
+	@Override
+	public String avisaAutonomia(double qtdCombustivelAtual, double consumoPorKilometro) {
+			double Kmdisponivel = qtdCombustivelAtual * consumoPorKilometro;
 			
-		return distancia / tempo;
+				if (Kmdisponivel > 10) {
+					return "Seu carro aguenta mais 10km";
+				}
+				
+				else {
+					return "Precisa abastecer";
+				}
+	}
+
+
+	@Override
+	public double velocidadeMedia(double distancia, double tempo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	
+
+		
 		
 	}
 	
 	
-
-
 	
-	
-}
