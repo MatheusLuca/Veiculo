@@ -6,18 +6,18 @@ public abstract class Veiculos {
 	protected String modelo;
 	protected String placa;
 	protected int ano;
-	protected double combustivel;
+	protected double combustivelVeiculo;
 	protected String tipoDeCombustivel;
 	protected int capacidadeTanque;
 	
-	public Veiculos(String marca, String modelo, String placa, int ano, double combustivel, String tipoDeCombustivel) {
+	public Veiculos(String marca, String modelo, String placa, int ano, String tipoDeCombustivel, int capacidadeTanque) {
 
 		this.marca = marca;
 		this.modelo = modelo;
 		this.placa = placa;
 		this.ano = ano;
-		this.combustivel = combustivel;
 		this.tipoDeCombustivel = tipoDeCombustivel;
+		this.capacidadeTanque = capacidadeTanque;
 	}
 
 	public String getMarca() {
@@ -36,8 +36,8 @@ public abstract class Veiculos {
 		this.placa = placa;
 	}
 	
-	public double getCapacidadeDoTanque() {
-		return combustivel;
+	public int getCapacidadeTanque() {
+		return capacidadeTanque;
 	}
 	
 	public String getTipoDeCombustivel() {
@@ -54,8 +54,9 @@ public abstract class Veiculos {
 	
 	
 	public abstract double consumirCombustivel(double distancia, double combustivel);
-	//public abstract double velocidadeMedia(double distancia, double tempo);
-	//public abstract double frenagem();
-
+	public abstract double velocidadeMedia(double distancia, double tempo);
+	public abstract double geraCombustivel();
+	public abstract String avisaAutonomia(double qtdCombustivelAtual, double consumoPorKilometro);
+	
 
 }
