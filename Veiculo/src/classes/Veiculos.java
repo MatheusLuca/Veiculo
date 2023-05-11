@@ -57,6 +57,6 @@ public abstract class Veiculos {
 	public abstract double velocidadeMedia(double distancia, double tempo);
 	public abstract double geraCombustivel();
 	public abstract String avisaAutonomia(double qtdCombustivelAtual, double consumoPorKilometro);
-	
+	public abstract String imprimeDadosVeiculo();
 
 }
