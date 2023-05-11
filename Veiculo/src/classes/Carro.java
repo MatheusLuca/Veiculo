@@ -4,30 +4,44 @@ import java.util.Random;
 
 public class Carro extends Veiculos{
 	
-	private double distanciaPercorrida;
-	private double velocidade;
 	public static int capacidadeTanque = 55;
 	
 	public Carro(String marca, String modelo, String placa, int ano, String tipoDeCombustivel ){
+		
 		super(marca, modelo, placa, ano, tipoDeCombustivel, capacidadeTanque);
 		
-		
-		
-
+		this.marca = marca;
+		this.modelo = modelo;
+		this.placa = placa;
+		this.ano = ano;
+		this.tipoDeCombustivel = tipoDeCombustivel;
 	}
 	
-	
-	public double getDistanciaPercorrida() {
-		return distanciaPercorrida;
-	}
-		
 	@Override
-	public int getCapacidadeTanque() {
-
-		return super.getCapacidadeTanque();
+	public String getMarca() {
+		// TODO Auto-generated method stub
+		return super.getMarca();
 	}
-
-
+	
+	@Override
+	public String getModelo() {
+		// TODO Auto-generated method stub
+		return super.getModelo();
+	}
+	
+	@Override
+	public String getPlaca() {
+		// TODO Auto-generated method stub
+		return super.getPlaca();
+	}
+	
+	@Override
+	public String getTipoDeCombustivel() {
+		// TODO Auto-generated method stub
+		return super.getTipoDeCombustivel();
+	}
+	
+	
 	
 	@Override
 	public double consumirCombustivel(double distancia, double combustivel) {
@@ -43,6 +57,7 @@ public class Carro extends Veiculos{
 		}
 	}
 	
+
 	
 	@Override
 	public  double geraCombustivel() {
@@ -59,26 +74,28 @@ public class Carro extends Veiculos{
 			double Kmdisponivel = qtdCombustivelAtual * consumoPorKilometro;
 			
 				if (Kmdisponivel > 10) {
-					return "Seu carro aguenta mais 10km";
+					return "\nSeu carro aguenta mais 10km";
 				}
 				
 				else {
-					return "Precisa abastecer";
+					return "Seu carro tem menos de 10km até a gasolina acabar";
 				}
 	}
 
 
 	@Override
 	public double velocidadeMedia(double distancia, double tempo) {
-		// TODO Auto-generated method stub
-		return 0;
+			
+		 return (distancia / tempo);
 	}
 
+	@Override
+	public String imprimeDadosVeiculo() {
+		return " " + getMarca() + " " + getModelo();
+	}
 	
-
-		
-		
-	}
+}
+   
 	
 	
 	
