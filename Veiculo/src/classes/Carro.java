@@ -5,6 +5,10 @@ import java.util.Random;
 public class Carro extends Veiculos{
 	
 	public static int capacidadeTanque = 55;
+	private double quantidadeDeCombustivel;
+	private double tempoPercurso;
+	private double ConsumoPorKm;
+	private double velocidadeMedia;
 	
 	public Carro(String marca, String modelo, String placa, int ano, String tipoDeCombustivel ){
 		
@@ -15,6 +19,7 @@ public class Carro extends Veiculos{
 		this.placa = placa;
 		this.ano = ano;
 		this.tipoDeCombustivel = tipoDeCombustivel;
+
 	}
 	
 	@Override
@@ -41,57 +46,108 @@ public class Carro extends Veiculos{
 		return super.getTipoDeCombustivel();
 	}
 	
+    public double getQuantidadeDeCombustivel() {
+		return quantidadeDeCombustivel;
+	}
+    
+    public void setQuantidadeDeCombustivel(double quantidadeDeCombustivel) {
+		this.quantidadeDeCombustivel = quantidadeDeCombustivel;
+	}
 	
-	
+    public double getTempoPercurso() {
+		return tempoPercurso;
+	}
+ 
+    public void setTempoPercurso(double tempoPercurso) {
+		this.tempoPercurso = tempoPercurso;
+	}
+    
+    public double getConsumoPorKm() {
+		return ConsumoPorKm;
+	}
+    
+    public void setConsumoPorKm(double consumoPorKm) {
+		ConsumoPorKm = consumoPorKm;
+	}
+    
+    public double getVelocidadeMedia() {
+		return velocidadeMedia;
+	}
+    
+    public void setVelocidadeMedia(double velocidadeMedia) {
+		this.velocidadeMedia = velocidadeMedia;
+	}
+    
+    
 	@Override
-	public double consumirCombustivel(double distancia, double combustivel) {
+	public void consumirCombustivel(double distancia, double combustivel) {
 		
 		 double potencialCombustivelGasolina = 1.30;
-		 
+		 double resultado;
 		 if (super.getTipoDeCombustivel().equalsIgnoreCase("gasolina")) {
-			return distancia / (combustivel * potencialCombustivelGasolina);
+			
+			resultado = distancia / (combustivel * potencialCombustivelGasolina);
+			setConsumoPorKm(resultado);
 		}
 		 
 		 else {
-			return distancia / combustivel;
+			 
+			resultado =  distancia / combustivel;
+			setConsumoPorKm(resultado);
 		}
 	}
 	
 
 	
 	@Override
-	public  double geraCombustivel() {
+	public void geraCombustivel() {
 		
 		double valorAtualDoTanque = 0;	
 		Random gerarValorAtualDoTanque = new Random();
 		valorAtualDoTanque = gerarValorAtualDoTanque.nextDouble() * 54 + 1;
 		Math.round(valorAtualDoTanque);
-		return valorAtualDoTanque;
+		setQuantidadeDeCombustivel(valorAtualDoTanque);
+		 
 	}
 	
 	@Override
-	public String avisaAutonomia(double qtdCombustivelAtual, double consumoPorKilometro) {
+	public boolean avisaAutonomia(double qtdCombustivelAtual, double consumoPorKilometro) {
 			double Kmdisponivel = qtdCombustivelAtual * consumoPorKilometro;
 			
 				if (Kmdisponivel > 10) {
-					return "\nSeu carro aguenta mais 10km";
+					return true;
 				}
 				
 				else {
-					return "Seu carro tem menos de 10km até a gasolina acabar";
+					return false;
 				}
 	}
 
 
 	@Override
-	public double velocidadeMedia(double distancia, double tempo) {
+	public void velocidadeMedia(double distancia, double tempo) {
+			double resultado;
+			resultado = distancia / tempo;
+			setVelocidadeMedia(resultado);
 			
-		 return (distancia / tempo);
 	}
 
 	@Override
 	public String imprimeDadosVeiculo() {
 		return " " + getMarca() + " " + getModelo();
+	}
+	
+	@Override
+	public void gerarTempoAleatorio() {
+		double tempo = 0;
+		double tempoValido = 0;
+		Random gerarTempoRandomico = new Random();
+
+		tempo = gerarTempoRandomico.nextDouble();
+		tempoValido = tempo / 60;			
+		Math.round(tempoValido);
+		setTempoPercurso(tempoValido);
+		 
 	}
 	
 }

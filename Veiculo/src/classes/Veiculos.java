@@ -53,10 +53,11 @@ public abstract class Veiculos {
 	}
 	
 	
-	public abstract double consumirCombustivel(double distancia, double combustivel);
-	public abstract double velocidadeMedia(double distancia, double tempo);
-	public abstract double geraCombustivel();
-	public abstract String avisaAutonomia(double qtdCombustivelAtual, double consumoPorKilometro);
+	public abstract void consumirCombustivel(double distancia, double combustivel);
+	public abstract void velocidadeMedia(double distancia, double tempo);
+	public abstract void geraCombustivel();
+	public abstract boolean avisaAutonomia(double qtdCombustivelAtual, double consumoPorKilometro);
 	public abstract String imprimeDadosVeiculo();
+	public abstract void gerarTempoAleatorio();
 
 }

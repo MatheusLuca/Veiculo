@@ -1,4 +1,4 @@
-package classes;
+/*package classes;
 
 import java.util.Random;
 
@@ -15,6 +15,11 @@ public class Moto extends Veiculos {
 		public int getCapacidadeTanque() {
 			
 			return super.getCapacidadeTanque();
+		}
+		
+		private void setTempoPercurso(double tempoValido) {
+			// TODO Auto-generated method stub
+			
 		}
 		
 		@Override
@@ -34,13 +39,14 @@ public class Moto extends Veiculos {
 		
 		
 		@Override
-		public  double geraCombustivel() {
+		public void geraCombustivel() {
 			
 			double valorAtualDoTanque = 0;	
 			Random gerarValorAtualDoTanque = new Random();
-			valorAtualDoTanque = gerarValorAtualDoTanque.nextDouble() * 10 + 1;
+			valorAtualDoTanque = gerarValorAtualDoTanque.nextDouble() * 54 + 1;
 			Math.round(valorAtualDoTanque);
-			return valorAtualDoTanque;
+			setTipoDeCombustivel(valorAtualDoTanque);
+			 
 		}
 		
 		@Override
@@ -68,4 +74,18 @@ public class Moto extends Veiculos {
 		
 		
 		}
-}
+		
+		@Override
+		public void gerarTempoAleatorio() {
+			double tempo = 0;
+			double tempoValido = 0;
+			Random gerarTempoRandomico = new Random();
+
+			tempo = gerarTempoRandomico.nextDouble();
+			tempoValido = tempo / 60;			
+			Math.round(tempoValido);
+			setTempoPercurso(tempoValido);
+			 }
+
+
+}*/

@@ -4,7 +4,6 @@ import java.util.Locale;
 import java.util.Scanner;
 import java.util.Random;
 import classes.Carro;
-import classes.Moto;
 import classes.Veiculos;
 
 import java.lang.Math;
@@ -36,37 +35,38 @@ public class Programa {
 			System.out.println("Tipo de combustivel");
 			tipoDeCombustivel = input.next();
 				
-			Carro carro1 = new Carro(marca,  modelo,  placa,  ano,  tipoDeCombustivel);
-			double qtdCombustivelAtual = carro1.geraCombustivel();
-			
-			
-			System.out.printf("\n------O valor do combustivel atual do carro é %.2f\n------" , qtdCombustivelAtual); 			
-		
+			Carro carro1 = new Carro(marca,  modelo,  placa,  ano,  tipoDeCombustivel);		
+			carro1.geraCombustivel();
+			System.out.printf("\n------O valor do combustivel atual do carro é %.2f\n------" ,carro1.getQuantidadeDeCombustivel()); 					
 			System.out.println("\nInsira um valor de distancia percorrida por KM:");
 			double distanciaPercorrida = input.nextDouble();
-			double consumoPorKilometro = carro1.consumirCombustivel(distanciaPercorrida, qtdCombustivelAtual);
-			System.out.printf("O consumo de combustivel por quilometro é de : %.2f\n" , consumoPorKilometro);
 			
-			System.out.println(carro1.avisaAutonomia(qtdCombustivelAtual, consumoPorKilometro));
+			carro1.consumirCombustivel(distanciaPercorrida, carro1.getQuantidadeDeCombustivel());
+			System.out.printf("O consumo por km é de %.2f: \n" , carro1.getConsumoPorKm());
 			
-				// gerar tempo aleatório para calculo de velocidade media.
-					double tempo = 0;
-					double tempoValido = 0;
-					Random gerarTempoRandomico = new Random();
 			
-					tempo = gerarTempoRandomico.nextDouble();
-					tempoValido = tempo / 60;			
-					Math.round(tempoValido);
-					System.out.printf("Tempo da viagem foi de %.2f hora\n " , tempoValido);
-					
-					
-					double velocidade = carro1.velocidadeMedia(distanciaPercorrida, tempoValido);
-					
-				System.out.printf("Velocidade: %.2f\n", velocidade);
-				System.out.println(carro1.imprimeDadosVeiculo());
-			break;
+			carro1.gerarTempoAleatorio();
+			System.out.printf("o valor do tempo: %.2f \n", carro1.getTempoPercurso());
+
+			
+			
+			carro1.avisaAutonomia(carro1.getQuantidadeDeCombustivel(), carro1.getConsumoPorKm());
+			
+			if(carro1.avisaAutonomia(carro1.getQuantidadeDeCombustivel(), carro1.getConsumoPorKm()) == true) {
+				
+				System.out.println("\nSeu carro tem autonomia para mais de 10km");
+			}
+			
+			else {
+				System.out.println("\nSeu carro tem autonomia para menos de 10km");
+			}
+			
+			carro1.velocidadeMedia(distanciaPercorrida, carro1.getTempoPercurso());
+			System.out.printf("Velocidade media é de: %.2f", carro1.getVelocidadeMedia());
+			
+		break;
 		case 2:
-				System.out.println("----CARRO----");
+				/*System.out.println("----CARRO----");
 				System.out.println("Qual a marca?");
 				marca = input.next();
 				System.out.println("Modelo?");
@@ -89,21 +89,14 @@ public class Programa {
 					
 					System.out.println(moto1.avisaAutonomia(qtdCombustivelAtualMoto, consumoMotoPorKM));
 					
-					double tempoMoto = 0;
-					double tempoValidoMoto = 0;
-					Random gerarTempoRandomicoMoto = new Random();
-			
-					tempoMoto = gerarTempoRandomicoMoto.nextDouble();
-					tempoValidoMoto = tempoMoto / 60;			
-					Math.round(tempoValidoMoto);
-					System.out.printf("Tempo da viagem foi de %.2f hora\n " , tempoValidoMoto);
+					
 					
 					double velocidadeMoto = moto1.velocidadeMedia(distanciaMotoPercorrida, tempoValidoMoto);
 					
 					System.out.printf("Velocidade: %.2f\n", velocidadeMoto);
 					System.out.println(moto1.imprimeDadosVeiculo());
 					
-			break;
+			break;*/
 		}
 		
 		
